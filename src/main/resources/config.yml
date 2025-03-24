@@ -1,172 +1,172 @@
-# PlayerSpawn Configuration
+# PlayerSpawn 配置
 
-# Default spawn settings
+# 默认重生设置
 default:
-  # Server-wide default spawn point
+  # 全服务器默认重生点
   server:
-    enabled: true
-    location:
-      world: world
-      x: 0
-      y: 64
-      z: 0
-      yaw: 0
-      pitch: 0
+    enabled: true  # 是否启用
+    location:      # 位置
+      world: world  # 世界名称
+      x: 0         # X 坐标
+      y: 64        # Y 坐标
+      z: 0         # Z 坐标
+      yaw: 0       # 水平旋转角度
+      pitch: 0     # 垂直旋转角度
   
-  # World-specific default spawn points
+  # 世界特定的默认重生点
   worlds:
     world:
-      enabled: false
-      location:
-        x: 0
-        y: 64
-        z: 0
-        yaw: 0
-        pitch: 0
+      enabled: false  # 是否启用
+      location:       # 位置
+        x: 0         # X 坐标
+        y: 64        # Y 坐标
+        z: 0         # Z 坐标
+        yaw: 0       # 水平旋转角度
+        pitch: 0     # 垂直旋转角度
     world_nether:
-      enabled: false
-      location:
-        x: 0
-        y: 64
-        z: 0
-        yaw: 0
-        pitch: 0
+      enabled: false  # 是否启用
+      location:       # 位置
+        x: 0         # X 坐标
+        y: 64        # Y 坐标
+        z: 0         # Z 坐标
+        yaw: 0       # 水平旋转角度
+        pitch: 0     # 垂直旋转角度
 
-# New player spawn settings
+# 新玩家重生设置
 new_player:
-  # Use custom spawn for new players
-  enabled: true
-  # Use the default spawn point if not specified
+  # 是否为新玩家使用自定义重生点
+  enabled: true  # 是否启用
+  # 如果未指定，则使用默认重生点
   use_default_if_not_specified: true
-  location:
-    world: world
-    x: 0
-    y: 64
-    z: 0
-    yaw: 0
-    pitch: 0
+  location:      # 位置
+    world: world  # 世界名称
+    x: 0         # X 坐标
+    y: 64        # Y 坐标
+    z: 0         # Z 坐标
+    yaw: 0       # 水平旋转角度
+    pitch: 0     # 垂直旋转角度
 
-# Respawn settings
+# 重生设置
 respawn:
-  # Use custom respawn point
-  enabled: true
-  # Use player spawn if available
+  # 是否使用自定义重生点
+  enabled: true  # 是否启用
+  # 如果可用，使用玩家的重生点
   use_player_spawn: true
-  # Use the default spawn point if not specified
+  # 如果未指定，则使用默认重生点
   use_default_if_not_specified: true
-  # Server-wide respawn point
+  # 全服务器重生点
   server:
-    enabled: false
-    location:
-      world: world
-      x: 0
-      y: 64
-      z: 0
-      yaw: 0
-      pitch: 0
-  # World-specific respawn points
+    enabled: false  # 是否启用
+    location:       # 位置
+      world: world  # 世界名称
+      x: 0         # X 坐标
+      y: 64        # Y 坐标
+      z: 0         # Z 坐标
+      yaw: 0       # 水平旋转角度
+      pitch: 0     # 垂直旋转角度
+  # 世界特定的重生点
   worlds:
     world:
-      enabled: false
-      location:
-        x: 0
-        y: 64
-        z: 0
-        yaw: 0
-        pitch: 0
+      enabled: false  # 是否启用
+      location:       # 位置
+        x: 0         # X 坐标
+        y: 64        # Y 坐标
+        z: 0         # Z 坐标
+        yaw: 0       # 水平旋转角度
+        pitch: 0     # 垂直旋转角度
 
-# Teleport player to their spawn point when joining
+# 玩家加入时传送到他们的重生点
 teleport_on_join: false
 
-# Vanilla respawn mechanics settings
+# 原版重生机制设置
 vanilla_mechanics:
-  # Whether to respect beds and respawn anchors as spawn points (true = use vanilla behavior)
+  # 是否尊重床和重生锚作为重生点 (true = 使用原版行为)
   respect_bed_and_anchor: true
 
-# Rejoin settings
+# 重新加入设置
 on_rejoin:
-  # What to do when a player rejoins the server
-  # Options: "last_location" (teleport to last logout location), "spawn" (teleport to spawn), "nothing" (do nothing)
+  # 当玩家重新加入服务器时的行为
+  # 选项: "last_location" (传送到上次登出的位置), "spawn" (传送到重生点), "nothing" (什么都不做)
   behavior: "nothing"
-  # Whether to save player's logout location
+  # 是否保存玩家的登出位置
   save_logout_location: true
 
-# Floodgate (Bedrock) player settings
+# Floodgate (Bedrock) 玩家设置
 floodgate:
-  # Enable special handling for Floodgate players
-  enabled: true
-  # Server-wide spawn point for Floodgate players
+  # 是否为 Floodgate 玩家启用特殊处理
+  enabled: true  # 是否启用
+  # 全服务器重生点 (针对 Floodgate 玩家)
   server:
-    enabled: false
-    location:
-      world: world
-      x: 0
-      y: 64
-      z: 0
-      yaw: 0
-      pitch: 0
-  # World-specific spawn points for Floodgate players
+    enabled: false  # 是否启用
+    location:       # 位置
+      world: world  # 世界名称
+      x: 0         # X 坐标
+      y: 64        # Y 坐标
+      z: 0         # Z 坐标
+      yaw: 0       # 水平旋转角度
+      pitch: 0     # 垂直旋转角度
+  # 世界特定的重生点 (针对 Floodgate 玩家)
   worlds:
     world:
-      enabled: false
-      location:
-        x: 0
-        y: 64
-        z: 0
-        yaw: 0
-        pitch: 0
-  # New player spawn for Floodgate players
+      enabled: false  # 是否启用
+      location:       # 位置
+        x: 0         # X 坐标
+        y: 64        # Y 坐标
+        z: 0         # Z 坐标
+        yaw: 0       # 水平旋转角度
+        pitch: 0     # 垂直旋转角度
+  # 新玩家重生点 (针对 Floodgate 玩家)
   new_player:
-    enabled: false
-    location:
-      world: world
-      x: 0
-      y: 64
-      z: 0
-      yaw: 0
-      pitch: 0
-  # Respawn point for Floodgate players
+    enabled: false  # 是否启用
+    location:       # 位置
+      world: world  # 世界名称
+      x: 0         # X 坐标
+      y: 64        # Y 坐标
+      z: 0         # Z 坐标
+      yaw: 0       # 水平旋转角度
+      pitch: 0     # 垂直旋转角度
+  # 重生点 (针对 Floodgate 玩家)
   respawn:
-    enabled: false
-    # Server-wide respawn point
+    enabled: false  # 是否启用
+    # 全服务器重生点
     server:
-      enabled: false
-      location:
-        world: world
-        x: 0
-        y: 64
-        z: 0
-        yaw: 0
-        pitch: 0
-    # World-specific respawn points
+      enabled: false  # 是否启用
+      location:       # 位置
+        world: world  # 世界名称
+        x: 0         # X 坐标
+        y: 64        # Y 坐标
+        z: 0         # Z 坐标
+        yaw: 0       # 水平旋转角度
+        pitch: 0     # 垂直旋转角度
+    # 世界特定的重生点
     worlds:
       world:
-        enabled: false
-        location:
-          x: 0
-          y: 64
-          z: 0
-          yaw: 0
-          pitch: 0
+        enabled: false  # 是否启用
+        location:       # 位置
+          x: 0         # X 坐标
+          y: 64        # Y 坐标
+          z: 0         # Z 坐标
+          yaw: 0       # 水平旋转角度
+          pitch: 0     # 垂直旋转角度
 
-# Group spawn settings
+# 组重生设置
 groups:
   default:
     server:
-      enabled: false
-      location:
-        world: world
-        x: 0
-        y: 64
-        z: 0
-        yaw: 0
-        pitch: 0
+      enabled: false  # 是否启用
+      location:       # 位置
+        world: world  # 世界名称
+        x: 0         # X 坐标
+        y: 64        # Y 坐标
+        z: 0         # Z 坐标
+        yaw: 0       # 水平旋转角度
+        pitch: 0     # 垂直旋转角度
     worlds:
       world:
-        enabled: false
-        location:
-          x: 0
-          y: 64
-          z: 0
-          yaw: 0
-          pitch: 0
+        enabled: false  # 是否启用
+        location:       # 位置
+          x: 0         # X 坐标
+          y: 64        # Y 坐标
+          z: 0         # Z 坐标
+          yaw: 0       # 水平旋转角度
+          pitch: 0     # 垂直旋转角度
