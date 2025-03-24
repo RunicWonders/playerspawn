@@ -28,7 +28,7 @@ jobs:
           distribution: 'temurin'
           cache: maven
           server-id: github
-          settings-path: ${{ github.workspace }}/.github/workflows/maven-settings.xml
+          settings-path: ${{ github.workspace }}/.mvn
 
       - name: 获取提交哈希
         id: hash
@@ -59,7 +59,7 @@ jobs:
             -Dfile=target/PlayerSpawn-1.0.0-${{ steps.hash.outputs.hash }}.jar \
             -DrepositoryId=github \
             -Durl=https://maven.pkg.github.com/${{ github.repository }} \
-            -s ${{ github.workspace }}/.github/workflows/maven-settings.xml
+            -s ${{ github.workspace }}/.mvn/maven-settings.xml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_ACTOR: ${{ github.actor }} 
