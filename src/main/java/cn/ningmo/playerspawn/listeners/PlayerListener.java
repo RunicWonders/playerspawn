@@ -85,13 +85,13 @@ public class PlayerListener implements Listener {
                     // But we still handle teleport_on_join setting for backward compatibility
                     if (plugin.getConfigManager().getConfig().getBoolean("teleport_on_join", false)) {
                         // Get player's spawn location
-                        Location playerSpawn = SpawnUtils.getPlayerSpawn(player, player.getWorld());
+                        Location playerDefaultSpawn = SpawnUtils.getPlayerSpawn(player, player.getWorld());
                         
                         // Teleport player to their spawn if set
-                        if (playerSpawn != null) {
+                        if (playerDefaultSpawn != null) {
                             // Use a delayed task to ensure the teleport happens after the player fully joins
                             plugin.getServer().getScheduler().runTaskLater(plugin, () -> {
-                                player.teleport(playerSpawn, PlayerTeleportEvent.TeleportCause.PLUGIN);
+                                player.teleport(playerDefaultSpawn, PlayerTeleportEvent.TeleportCause.PLUGIN);
                             }, 5L);
                         }
                     }
