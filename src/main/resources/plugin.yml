@@ -1,0 +1,7 @@
+name: PlayerSpawn
+version: 1.0.0
+main: cn.ningmo.playerspawn.PlayerSpawn
+api-version: 1.21
+author: 柠枺
+description: 一个轻量级的玩家出生点插件，支持识别geyser玩家。
+softdepend: [floodgate]

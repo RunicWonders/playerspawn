@@ -1,0 +1,159 @@
+# PlayerSpawn Configuration
+
+# Default spawn settings
+default:
+  # Server-wide default spawn point
+  server:
+    enabled: true
+    location:
+      world: world
+      x: 0
+      y: 64
+      z: 0
+      yaw: 0
+      pitch: 0
+  
+  # World-specific default spawn points
+  worlds:
+    world:
+      enabled: false
+      location:
+        x: 0
+        y: 64
+        z: 0
+        yaw: 0
+        pitch: 0
+    world_nether:
+      enabled: false
+      location:
+        x: 0
+        y: 64
+        z: 0
+        yaw: 0
+        pitch: 0
+
+# New player spawn settings
+new_player:
+  # Use custom spawn for new players
+  enabled: true
+  # Use the default spawn point if not specified
+  use_default_if_not_specified: true
+  location:
+    world: world
+    x: 0
+    y: 64
+    z: 0
+    yaw: 0
+    pitch: 0
+
+# Respawn settings
+respawn:
+  # Use custom respawn point
+  enabled: true
+  # Use player spawn if available
+  use_player_spawn: true
+  # Use the default spawn point if not specified
+  use_default_if_not_specified: true
+  # Server-wide respawn point
+  server:
+    enabled: false
+    location:
+      world: world
+      x: 0
+      y: 64
+      z: 0
+      yaw: 0
+      pitch: 0
+  # World-specific respawn points
+  worlds:
+    world:
+      enabled: false
+      location:
+        x: 0
+        y: 64
+        z: 0
+        yaw: 0
+        pitch: 0
+
+# Teleport player to their spawn point when joining
+teleport_on_join: false
+
+# Floodgate (Bedrock) player settings
+floodgate:
+  # Enable special handling for Floodgate players
+  enabled: true
+  # Server-wide spawn point for Floodgate players
+  server:
+    enabled: false
+    location:
+      world: world
+      x: 0
+      y: 64
+      z: 0
+      yaw: 0
+      pitch: 0
+  # World-specific spawn points for Floodgate players
+  worlds:
+    world:
+      enabled: false
+      location:
+        x: 0
+        y: 64
+        z: 0
+        yaw: 0
+        pitch: 0
+  # New player spawn for Floodgate players
+  new_player:
+    enabled: false
+    location:
+      world: world
+      x: 0
+      y: 64
+      z: 0
+      yaw: 0
+      pitch: 0
+  # Respawn point for Floodgate players
+  respawn:
+    enabled: false
+    # Server-wide respawn point
+    server:
+      enabled: false
+      location:
+        world: world
+        x: 0
+        y: 64
+        z: 0
+        yaw: 0
+        pitch: 0
+    # World-specific respawn points
+    worlds:
+      world:
+        enabled: false
+        location:
+          x: 0
+          y: 64
+          z: 0
+          yaw: 0
+          pitch: 0
+
+# Group spawn settings
+groups:
+  default:
+    server:
+      enabled: false
+      location:
+        world: world
+        x: 0
+        y: 64
+        z: 0
+        yaw: 0
+        pitch: 0
+    worlds:
+      world:
+        enabled: false
+        location:
+          x: 0
+          y: 64
+          z: 0
+          yaw: 0
+          pitch: 0

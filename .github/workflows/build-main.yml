@@ -1,0 +1,65 @@
+name: Build on main branch
+
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '.github/**'
+      - '!.github/workflows/build-main.yml'
+
+permissions:
+  contents: read
+  actions: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+          server-id: github
+          settings-path: ${{ github.workspace }}/.github/workflows/maven-settings.xml
+
+      - name: 获取提交哈希
+        id: hash
+        run: echo "hash=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: 更新 POM 版本号
+        run: |
+          mvn versions:set -DnewVersion=1.0.0-${{ steps.hash.outputs.hash }} -DgenerateBackupPoms=false
+
+      - name: 使用 Maven 构建
+        run: mvn -B package --file pom.xml
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: PlayerSpawn-${{ steps.hash.outputs.hash }}
+          path: target/PlayerSpawn-*.jar
+          if-no-files-found: error
+          retention-days: 90
+
+      - name: 上传到 GitHub Packages
+        run: |
+          mvn deploy:deploy-file \
+            -DgroupId=cn.ningmo \
+            -DartifactId=playerspawn \
+            -Dversion=1.0.0-${{ steps.hash.outputs.hash }} \
+            -Dpackaging=jar \
+            -Dfile=target/PlayerSpawn-1.0.0-${{ steps.hash.outputs.hash }}.jar \
+            -DrepositoryId=github \
+            -Durl=https://maven.pkg.github.com/${{ github.repository }} \
+            -s ${{ github.workspace }}/.github/workflows/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }} 

@@ -1,0 +1,39 @@
+# PlayerSpawn Messages
+
+prefix: "&8[&aPlayerSpawn&8] &r"
+
+commands:
+  no-permission: "&c你没有权限执行此命令。"
+  player-only: "&c此命令只能由玩家执行。"
+  player-not-found: "&c找不到玩家 &e{player}&c。"
+  world-not-found: "&c找不到世界 &e{world}&c。"
+  invalid-coordinates: "&c无效的坐标。请使用 &ex y z &c格式。"
+  invalid-group: "&c无效的组名 &e{group}&c。"
+  invalid-syntax: "&c无效的命令语法。请使用 &e/ps help &c查看帮助。"
+  
+  help:
+    header: "&a===== PlayerSpawn 帮助 =====&r"
+    set: "&e/ps set [~|x y z] [玩家名] [<世界>|server] &7- 设置玩家的出生点"
+    group: "&e/ps group <组名> set [~|x y z] [玩家名] [<世界>|server] &7- 设置组的出生点"
+    floodgate: "&e/ps floodgate <newplayer|respawn> set [~|x y z] [<世界>|server] &7- 设置基岩版玩家的出生点或重生点"
+    reload: "&e/ps reload &7- 重新加载配置文件"
+    help: "&e/ps help &7- 显示此帮助信息"
+    footer: "&a========================&r"
+  
+  set:
+    success-server: "&a已将 &e{player} &a的服务器出生点设置为 &e{world} {x}, {y}, {z}&a。"
+    success-world: "&a已将 &e{player} &a在世界 &e{world} &a的出生点设置为 &e{x}, {y}, {z}&a。"
+    current-location: "&a已将 &e{player} &a的出生点设置为你当前的位置 &e{world} {x}, {y}, {z}&a。"
+  
+  group:
+    success-server: "&a已将组 &e{group} &a的服务器出生点设置为 &e{world} {x}, {y}, {z}&a。"
+    success-world: "&a已将组 &e{group} &a在世界 &e{world} &a的出生点设置为 &e{x}, {y}, {z}&a。"
+    current-location: "&a已将组 &e{group} &a的出生点设置为你当前的位置 &e{world} {x}, {y}, {z}&a。"
+  
+  floodgate:
+    success-newplayer: "&a已将基岩版玩家的新人出生点设置为 &e{world} {x}, {y}, {z}&a。"
+    success-respawn-server: "&a已将基岩版玩家的服务器重生点设置为 &e{world} {x}, {y}, {z}&a。"
+    success-respawn-world: "&a已将基岩版玩家在世界 &e{world} &a的重生点设置为 &e{x}, {y}, {z}&a。"
+  
+  reload:
+    success: "&a配置文件已重新加载。"

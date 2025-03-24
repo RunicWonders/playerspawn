@@ -1,0 +1,77 @@
+name: Create Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+  packages: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v4
+
+      - name: 设置 JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+          server-id: github
+          settings-path: ${{ github.workspace }}/.github/workflows/maven-settings.xml
+
+      - name: 获取标签版本
+        id: get_version
+        run: echo "version=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+
+      - name: 更新 POM 版本号
+        run: |
+          mvn versions:set -DnewVersion=${{ steps.get_version.outputs.version }} -DgenerateBackupPoms=false
+
+      - name: 使用 Maven 构建
+        run: mvn -B package --file pom.xml
+
+      - name: 创建 Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: PlayerSpawn ${{ steps.get_version.outputs.version }}
+          draft: false
+          prerelease: false
+          files: |
+            target/PlayerSpawn-${{ steps.get_version.outputs.version }}.jar
+          body: |
+            # PlayerSpawn ${{ steps.get_version.outputs.version }}
+            
+            一个轻量级的玩家出生点插件，支持识别 Geyser/Floodgate 基岩版玩家。
+            
+            ## 安装方法
+            
+            1. 下载 `PlayerSpawn-${{ steps.get_version.outputs.version }}.jar`
+            2. 将文件放入服务器的 plugins 目录
+            3. 重启服务器或使用插件管理器加载插件
+            
+            ## 依赖
+            
+            - Paper 1.21+（需要 Java 21）
+            - 可选: Floodgate（用于识别基岩版玩家）
+
+      - name: 上传到 GitHub Packages
+        run: |
+          mvn deploy:deploy-file \
+            -DgroupId=cn.ningmo \
+            -DartifactId=playerspawn \
+            -Dversion=${{ steps.get_version.outputs.version }} \
+            -Dpackaging=jar \
+            -Dfile=target/PlayerSpawn-${{ steps.get_version.outputs.version }}.jar \
+            -DrepositoryId=github \
+            -Durl=https://maven.pkg.github.com/${{ github.repository }} \
+            -s ${{ github.workspace }}/.github/workflows/maven-settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_ACTOR: ${{ github.actor }} 
