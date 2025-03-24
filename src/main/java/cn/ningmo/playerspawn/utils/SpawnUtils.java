@@ -9,12 +9,16 @@ import org.bukkit.entity.Player;
 
 import cn.ningmo.playerspawn.PlayerSpawn;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 /**
  * Utility class for managing player spawn points
  */
 public class SpawnUtils {
+    // Store logout locations in memory
+    private static final Map<UUID, Location> logoutLocations = new HashMap<>();
     
     /**
      * Set a player's spawn point
@@ -386,5 +390,29 @@ public class SpawnUtils {
         }
         
         return null;
+    }
+    
+    /**
+     * Save a player's logout location
+     * @param player The player
+     */
+    public static void saveLogoutLocation(Player player) {
+        if (player == null) return;
+        
+        FileConfiguration config = PlayerSpawn.getInstance().getConfigManager().getConfig();
+        if (config.getBoolean("on_rejoin.save_logout_location", true)) {
+            logoutLocations.put(player.getUniqueId(), player.getLocation());
+        }
+    }
+    
+    /**
+     * Get a player's logout location
+     * @param player The player
+     * @return The logout location, or null if not found
+     */
+    public static Location getLogoutLocation(Player player) {
+        if (player == null) return null;
+        
+        return logoutLocations.remove(player.getUniqueId());
     }
 }

@@ -37,3 +37,12 @@ commands:
   
   reload:
     success: "&a配置文件已重新加载。"
+    
+# System messages
+system:
+  respawn:
+    using-bed: "&7你将在你的床出生点重生。"
+    using-anchor: "&7你将在你的重生锚出生点重生。"
+  rejoin:
+    teleport-to-logout: "&7你已被传送回你离线前的位置。"
+    teleport-to-spawn: "&7你已被传送到出生点。"

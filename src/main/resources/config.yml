@@ -78,6 +78,19 @@ respawn:
 # Teleport player to their spawn point when joining
 teleport_on_join: false
 
+# Vanilla respawn mechanics settings
+vanilla_mechanics:
+  # Whether to respect beds and respawn anchors as spawn points (true = use vanilla behavior)
+  respect_bed_and_anchor: true
+
+# Rejoin settings
+on_rejoin:
+  # What to do when a player rejoins the server
+  # Options: "last_location" (teleport to last logout location), "spawn" (teleport to spawn), "nothing" (do nothing)
+  behavior: "nothing"
+  # Whether to save player's logout location
+  save_logout_location: true
+
 # Floodgate (Bedrock) player settings
 floodgate:
   # Enable special handling for Floodgate players
