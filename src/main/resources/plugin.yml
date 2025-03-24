@@ -5,3 +5,27 @@ api-version: 1.21
 author: 柠枺
 description: 一个轻量级的玩家出生点插件，支持识别geyser玩家。
 softdepend: [floodgate]
+
+commands:
+  ps:
+    description: PlayerSpawn 主命令
+    usage: /ps <help|set|group|floodgate|reload>
+    aliases: [playerspawn]
+    permission: playerspawn.use
+
+permissions:
+  playerspawn.use:
+    description: 允许使用 PlayerSpawn 基本命令
+    default: true
+  playerspawn.set:
+    description: 允许设置玩家出生点
+    default: op
+  playerspawn.group:
+    description: 允许设置组出生点
+    default: op
+  playerspawn.floodgate:
+    description: 允许设置基岩版玩家出生点
+    default: op
+  playerspawn.reload:
+    description: 允许重新加载插件配置
+    default: op
